@@ -1,6 +1,10 @@
 package vitals;
 
-static boolean checkTemperature(float temperature){
+
+
+public class Main {
+
+    static boolean checkTemperature(float temperature){
     return temperature < 0 || temperature > 45;
 }
 
@@ -11,8 +15,6 @@ static boolean checkState(float soc){
 static boolean checkChargeRate(float chargeRate){
     return chargeRate > 0.8;
 }
-
-public class Main {
     static boolean batteryIsOk(float temperature, float soc, float chargeRate) {
         if(checkTemperature(temperature)) {
             System.out.println("Temperature is out of range!");
