@@ -36,7 +36,7 @@ static boolean checkChargeRate(float chargeRate){
      }
     }
 
-    static void displayChargeRate(boolean isChargeRateOK){
+    static void displayChargeRate(boolean isChargeRateOk){
      if (!isChargeRateOk) {
          System.out.println("Charge Rate is out of range!");
      }
