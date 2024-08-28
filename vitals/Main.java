@@ -17,19 +17,26 @@ static boolean checkChargeRate(float chargeRate){
      boolean isTemperatureOk = !checkTemperature(temperature);
      boolean isSocOk = !checkState(soc);
      boolean isChargeRateOk = !checkChargeRate(chargeRate);
-     display(isTemperatureOk,isSocOk,isChargeRateOK)
-     
+     displayTemp(isTemperatureOk);
+     displaySoc( isSocOk);
+     displayChargeRate( isChargeRateOK);
 
      return isTemperatureOk && isSocOk && isChargeRateOk;
  }
 
-    static void display(boolean isTemperatureOk,boolean isSocOk,boolean isChargeRateOK){
+    static void displayTemp(boolean isTemperatureOk){
     if (!isTemperatureOk) {
          System.out.println("Temperature is out of range!");
      }
+    }
+
+    static void displaySoc(boolean isSocOk){
      if (!isSocOk) {
          System.out.println("State of Charge is out of range!");
      }
+    }
+
+    static void displayChargeRate(boolean isChargeRateOK){
      if (!isChargeRateOk) {
          System.out.println("Charge Rate is out of range!");
      }
