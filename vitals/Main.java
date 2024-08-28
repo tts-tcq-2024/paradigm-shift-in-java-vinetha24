@@ -19,7 +19,7 @@ static boolean checkChargeRate(float chargeRate){
      boolean isChargeRateOk = !checkChargeRate(chargeRate);
      displayTemp(isTemperatureOk);
      displaySoc( isSocOk);
-     displayChargeRate( isChargeRateOK);
+     displayChargeRate( isChargeRateOk);
 
      return isTemperatureOk && isSocOk && isChargeRateOk;
  }
