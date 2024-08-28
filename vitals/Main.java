@@ -14,19 +14,22 @@ static boolean checkChargeRate(float chargeRate){
     return chargeRate > 0.8;
 }
     static boolean batteryIsOk(float temperature, float soc, float chargeRate) {
-        if(checkTemperature(temperature)) {
+        boolean isTempNotOk = checkTemperature(temperature);
+        boolean isStateNotOk= checkStateOk(soc);
+        boolean isChargeRateNotOk = checkChargeRate(chargeRate);
+        if(!isTempOk) {
             System.out.println("Temperature is out of range!");
-            return false;
+
         } 
-        if(checkState(soc)) {
+        if(!isStateOk) {
             System.out.println("State of Charge is out of range!");
-            return false;
+          
         } 
-        if(checkChargeRate(chargeRate)) {
+        if(!isChargeRateOk) {
             System.out.println("Charge Rate is out of range!");
-            return false;
+            
         }
-        return true;
+        return !isTempNotOk && !isStateNotOk && !isChargeRateNotOk;
     }
 
     public static void main(String[] args) {
