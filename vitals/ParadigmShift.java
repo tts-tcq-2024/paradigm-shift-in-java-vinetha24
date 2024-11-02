@@ -25,15 +25,30 @@ public class ParadigmShift {
 
     static String displayParameterStatus(String parameterName, boolean isParameterOk, float value, float lowerLimit, float upperLimit, boolean enableWarning) {
         float tolerance = 0.05f * upperLimit;
+        String parameterStatus = "";
         if (!isParameterOk) {
-            return parameterName + " is out of range!";
-        } else if (enableWarning && (value < lowerLimit + tolerance || value > upperLimit - tolerance)) {
-            getWarningMessage(parameterName, value, lowerLimit, upperLimit, tolerance);
+          parameterStatus= parameterName + " is out of range!";
+        } else if (isParameterInWarningLevel(value, lowerLimit, upperLimit, enableWarning, tolerance)) {
+          parameterStatus = getWarningMessage(parameterName, value, lowerLimit, upperLimit, tolerance);
         }
-        return "";
+        return parameterStatus;
     }
 
     /**
+     * @param value
+     * @param lowerLimit
+     * @param upperLimit
+     * @param enableWarning
+     * @param tolerance
+     * @return
+     */
+    private static boolean isParameterInWarningLevel(float value, float lowerLimit, float upperLimit, boolean enableWarning,
+        float tolerance) {
+      return enableWarning && (value < lowerLimit + tolerance || value > upperLimit - tolerance);
+    }
+
+    
+     /**
      * @param parameterName
      * @param value
      * @param lowerLimit
