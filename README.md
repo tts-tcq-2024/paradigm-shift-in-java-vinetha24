@@ -60,7 +60,7 @@ Shorten the Semantic distance
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
 
-##Approach
--Entire method has to changed as per the requirement (enabling paramters only)
--display method will have the message parameter
+## Approach
+- Entire method has to changed as per the requirement (enabling paramters only)
+- display method will have the message parameter
 - This approach took lot of changes
