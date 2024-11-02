@@ -1,5 +1,4 @@
 package vitals;
-
 public class ParadigmShift {
 
     static boolean checkTemperature(float temperature) {
