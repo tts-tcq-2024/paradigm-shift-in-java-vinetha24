@@ -28,13 +28,27 @@ public class ParadigmShift {
         if (!isParameterOk) {
             return parameterName + " is out of range!";
         } else if (enableWarning && (value < lowerLimit + tolerance || value > upperLimit - tolerance)) {
-            if (value < lowerLimit + tolerance) {
-                return "Warning: Approaching discharge for " + parameterName;
-            } else if (value > upperLimit - tolerance) {
-                return "Warning: Approaching charge-peak for " + parameterName;
-            }
+            getWarningMessage(parameterName, value, lowerLimit, upperLimit, tolerance);
         }
         return "";
+    }
+
+    /**
+     * @param parameterName
+     * @param value
+     * @param lowerLimit
+     * @param upperLimit
+     * @param tolerance
+     */
+    private static String getWarningMessage(String parameterName, float value, float lowerLimit, float upperLimit,
+        float tolerance) {
+      String message = "";
+      if (value < lowerLimit + tolerance) {
+          message = "Warning: Approaching discharge for " + parameterName;
+      } else if (value > upperLimit - tolerance) {
+          message = "Warning: Approaching charge-peak for " + parameterName;
+      }
+      return message;
     }
 
     public static void main(String[] args) {
