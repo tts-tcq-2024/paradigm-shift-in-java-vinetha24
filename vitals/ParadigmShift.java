@@ -67,11 +67,15 @@ public class ParadigmShift {
     }
 
     public static void main(String[] args) {
-        assert (batteryIsOk(25, 70, 0.7f, true, true, true).equals("Warning: Approaching discharge for Charge Rate"));
-        assert (batteryIsOk(50, 85, 0.0f, true, true, true).equals("Temperature is out of range!State of Charge is out of range!Warning: Approaching discharge for Charge Rate"));
-        assert (batteryIsOk(-1, 85, 0.0f, true, true, true).equals("Warning: Approaching charge-peak for Charge Rate"));
-        assert (batteryIsOk(25, 10, 0.0f, true, true, true).equals("Warning: Approaching discharge for Temperature"));
-        assert (batteryIsOk(25, 10, 0.0f, true, true, true).equals("State of Charge is out of range!"));
-        assert (batteryIsOk(25, 10, 0.0f, false, false, false).equals(""));
+      // if batteryIsOk returns "" otherwise parameter status will be returned
+        assert (batteryIsOk(25, 70, 0.7f, true, true, true).equals(""));
+        assert (batteryIsOk(50, 85, 0.0f, true, true, false).equals("Temperature is out of range!State of Charge is out of range!"));
+        assert (batteryIsOk(-1, 85, 0.9f, true, true, false).equals("Temperature is out of range!State of Charge is out of range!Charge Rate is out of range!"));
+        assert (batteryIsOk(25, 23, 0.7f, true, true, true).equals("Warning: Approaching discharge for State of Charge"));
+        assert (batteryIsOk(25, 78, 0.6f, true, true, false).equals("Warning: Approaching charge-peak for State of Charge"));
+        assert (batteryIsOk(25, 10, 0.0f, false, false, false).equals("State of Charge is out of range!"));
+        assert (batteryIsOk(2, 10, 0.0f, true, false, false).equals("Warning: Approaching discharge for TemperatureState of Charge is out of range!"));
+        assert (batteryIsOk(44, 10, 0.0f, true, false, false).equals("Warning: Approaching charge-peak for TemperatureState of Charge is out of range!")); 
+       
     }
 }
